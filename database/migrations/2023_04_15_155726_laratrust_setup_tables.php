@@ -13,6 +13,15 @@ class LaratrustSetupTables extends Migration
      */
     public function up()
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->integer('number');
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
         // Create table for storing roles
         Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -39,6 +48,8 @@ class LaratrustSetupTables extends Migration
 
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['user_id', 'role_id', 'user_type']);
         });
@@ -50,6 +61,8 @@ class LaratrustSetupTables extends Migration
             $table->string('user_type');
 
             $table->foreign('permission_id')->references('id')->on('permissions')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['user_id', 'permission_id', 'user_type']);
@@ -67,6 +80,7 @@ class LaratrustSetupTables extends Migration
 
             $table->primary(['permission_id', 'role_id']);
         });
+        
     }
 
     /**
@@ -81,5 +95,7 @@ class LaratrustSetupTables extends Migration
         Schema::dropIfExists('permissions');
         Schema::dropIfExists('role_user');
         Schema::dropIfExists('roles');
+        Schema::dropIfExists('users');
+
     }
 }
