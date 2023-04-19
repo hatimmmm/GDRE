@@ -8,27 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+
+
+
 class AuthController extends Controller
 
 {
-    public function signup(SignupRequest $request)
-    {
-        $data = $request ->validated();
-        /** @var User $user */
-        $user = User::create([
-            'name'=>$data['name'],
-            'email'=>$data['email'],
-            'number'=>$data['number'],
-            'password'=>bcrypt($data['password'])
-        ]);
-        $role= request()->role_id;
-
-        $user->addRole($role);
-
-        $token = $user->createToken('main')->plainTextToken;
-
-        return response(compact('user','token'));
-    }
     public function login(LoginRequest $request)
     {
 
@@ -44,7 +29,7 @@ class AuthController extends Controller
 
         if($user->hasRole('administrateur'))
         {
-            return response('admin dash');
+            return response(['message'=>'admin dash',$token]);
         }
         elseif($user->hasRole('archiviste'))
         {
@@ -52,19 +37,20 @@ class AuthController extends Controller
         }
         elseif($user->hasRole('utilisateur'))
         {
-            return view('dash');
+            return response('user dash');
         }
         
         
         
     }
    
-    public function logout(Request $request)
+    public function logout()
     {
         /** @var User $user */
-        $user = $request->user();
-        $token=$user->currentAccessToken()->delete();
-        return response($token);
+        $user= Auth::user();
+        $user->tokens()->delete();
+
+        return ['message'=>'user loed out',$user];
         
     }
 };

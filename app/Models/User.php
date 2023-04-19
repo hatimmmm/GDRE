@@ -12,8 +12,7 @@ use Laratrust\Traits\HasRolesAndPermissions;
 
 class User extends Authenticatable implements LaratrustUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    use HasRolesAndPermissions;
+    use HasApiTokens, HasFactory, Notifiable,HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +20,10 @@ class User extends Authenticatable implements LaratrustUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
-        'password',
-        'number'
+        'tel',
     ];
 
     /**

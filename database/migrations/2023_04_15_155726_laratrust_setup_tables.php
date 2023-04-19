@@ -15,13 +15,15 @@ class LaratrustSetupTables extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nom');
+            $table->string('prenom');
             $table->string('email')->unique();
-            $table->integer('number');
+            $table->integer('tel');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
         // Create table for storing roles
         Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
