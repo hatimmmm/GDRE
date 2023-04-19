@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+
+
+
 class AuthController extends Controller
 
 {
@@ -26,7 +29,7 @@ class AuthController extends Controller
 
         if($user->hasRole('administrateur'))
         {
-            return response('admin dash');
+            return response(['message'=>'admin dash',$token]);
         }
         elseif($user->hasRole('archiviste'))
         {
@@ -41,12 +44,13 @@ class AuthController extends Controller
         
     }
    
-    public function logout(Request $request)
+    public function logout()
     {
         /** @var User $user */
-        $user = $request->user();
-        $token=$user->currentAccessToken()->delete();
-        return response($token);
+        $user= Auth::user();
+        $user->tokens()->delete();
+
+        return ['message'=>'user loed out',$user];
         
     }
 };

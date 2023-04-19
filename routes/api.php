@@ -20,15 +20,11 @@ use Illuminate\Routing\RouteGroup;
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('users',UserController::class);
-
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
     
-Route::post('/logout', [ApiAuthController::class, 'logout']);
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[DashboardController::class,'redirect'])->name('dashboard');
 });    
 Route::post('/login', [ApiAuthController::class, 'login']);
-Route::post('/logout', [ApiAuthController::class, 'logout']);
+
