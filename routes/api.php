@@ -3,8 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController as ApiAuthController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmprunteurController;
+use App\Http\Controllers\EntiteVersanteController;
 use App\Http\Controllers\UserController;
+use App\Models\EntiteVersante;
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -21,7 +25,9 @@ use Illuminate\Routing\RouteGroup;
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('users',UserController::class);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
-    
+    Route::apiResource('emprunteurs',EmprunteurController::class);
+    Route::apiResource('entiteVersantes',EntiteVersanteController::class);
+    Route::apiResource('articles',ArticleController::class);
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[DashboardController::class,'redirect'])->name('dashboard');
