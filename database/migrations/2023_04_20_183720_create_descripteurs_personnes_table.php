@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('descripteurs_geographiques', function (Blueprint $table) {
-            $table->id('id_descripteur_geographique');
-            $table->string('descripteur_geographique')->nullable();
-            $table->string('qualite')->nullable();
+        Schema::create('descripteurs_personnes', function (Blueprint $table) {
+            $table->id('id_descripteur_personne');
+            $table->string('abrege')->nullable();
+            $table->string('descripteur_personne')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('descripteurs_geographiques');
+        Schema::dropIfExists('descripteurs_personnes');
     }
 };

@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('descripteurs_thematiques', function (Blueprint $table) {
-            $table->id('id_descripteurs_thematiques');
+            $table->id('id_descripteur_thematique');
             $table->string('descripteur_thematique');
             $table->string('objet_ou_action')->nullable();
             $table->string('voir')->nullable();
             $table->string('voir_aussi')->nullable();
             $table->string('commentaire')->nullable();
-            $table->timestamps();
+            
         });
     }
 
