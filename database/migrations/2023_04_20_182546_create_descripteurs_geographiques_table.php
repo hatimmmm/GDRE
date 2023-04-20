@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('descripteurs_geographiques', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_descripteurs_geographiques');
+            $table->string('descripteur_geographique')->nullable();
+            $table->string('qualite')->nullable();
             $table->timestamps();
         });
     }

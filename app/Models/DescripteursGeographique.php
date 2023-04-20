@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class DescripteursGeographique extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'descripteur_geographique',
+        'qualite',
+        
+    ];
+
+    protected $primary='id_descripteur_geographique';
 }
