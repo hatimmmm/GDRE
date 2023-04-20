@@ -23,14 +23,15 @@ use Illuminate\Routing\RouteGroup;
 */
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::apiResource('users',UserController::class);
-    Route::post('/logout', [ApiAuthController::class, 'logout']);
+    
+});
+Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('emprunteurs',EmprunteurController::class);
     Route::apiResource('entiteVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
-});
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard',[DashboardController::class,'redirect'])->name('dashboard');
-});    
+    Route::apiResource('users',UserController::class);
+
+
+
 Route::post('/login', [ApiAuthController::class, 'login']);
 
