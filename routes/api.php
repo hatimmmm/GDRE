@@ -9,8 +9,8 @@ use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\EmprunteurController;
 use App\Http\Controllers\EntiteVersanteController;
 use App\Http\Controllers\UserController;
-use App\Models\EntiteVersante;
-use Illuminate\Routing\RouteGroup;
+use App\Http\Controllers\VersementController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +32,8 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);
     Route::apiResource('emprunts',EmpruntController::class);
+    Route::apiResource('versements',VersementController::class);
+
 
 Route::post('/login', [ApiAuthController::class, 'login']);
 
