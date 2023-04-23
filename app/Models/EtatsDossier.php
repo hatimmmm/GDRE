@@ -12,6 +12,6 @@ class EtatsDossier extends Model
         'etat_dossier'
     ];
 
-    protected $primary= 'id_etat_dossier';
+    protected $primaryKey= 'id_etat_dossier';
 
 }

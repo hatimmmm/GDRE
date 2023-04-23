@@ -12,5 +12,5 @@ class TypesSupport extends Model
         'type_support'
     ];
 
-    protected $primary= 'id_type_support';
+    protected $primaryKey= 'id_type_support';
 }

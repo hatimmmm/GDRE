@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController as ApiAuthController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\EmprunteurController;
 use App\Http\Controllers\EntiteVersanteController;
 use App\Http\Controllers\UserController;
@@ -30,8 +31,7 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('entiteVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);
-
-
+    Route::apiResource('emprunts',EmpruntController::class);
 
 Route::post('/login', [ApiAuthController::class, 'login']);
 

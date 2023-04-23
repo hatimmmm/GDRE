@@ -13,5 +13,5 @@ class PlanClassement extends Model
         'plan_classement'
     ];
 
-    protected $primary = 'code_plan_classement';
+    protected $primaryKey = 'code_plan_classement';
 }

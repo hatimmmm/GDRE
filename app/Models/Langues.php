@@ -14,5 +14,5 @@ class Langues extends Model
         'langue'
     ];
 
-    protected $primary= 'id_langue';
+    protected $primaryKey= 'id_langue';
 }
