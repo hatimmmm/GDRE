@@ -88,7 +88,7 @@ class VersementController extends Controller
         return response(['message'=>'versement updated',$versement]);
         }
 
-
+                
         
     public function destroy($id)
     {
