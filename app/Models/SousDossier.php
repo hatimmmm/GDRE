@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SousDossier extends Model
 {
@@ -22,4 +23,9 @@ class SousDossier extends Model
             'auteur',
             'nombre_copie',
     ];
+
+    public function dossier(): BelongsTo
+    {
+        return $this->belongsTo(Dossier::class,'id_dossier','id_dossier');
+    }
 }

@@ -30,5 +30,10 @@ class Dossier extends Model
             'saisi_par',
             'date_saisie',
     ];
+
+    public function sousDossier()
+    {
+        return $this->hasMany(SousDossier::class,'id_dossier','id_dossier');
+    }
 }
 
