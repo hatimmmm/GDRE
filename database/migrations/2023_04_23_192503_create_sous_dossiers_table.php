@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nombre_copies')->nullable();
             $table->boolean('manquant')->nullable();
             $table->string('intitule_num_identifiant')->nullable();
-            $table->string('oservation')->nullable();
+            $table->string('observation')->nullable();
             $table->timestamps();
         });
     }
