@@ -39,6 +39,8 @@ class StoreDossierRequest extends FormRequest
             'rempli_par'=>'string',
             'saisi_par'=>'string',
             'date_saisie'=>'date',
+            'id_descripteur_thematique'=>'integer',
+            'qualite'=>'string'
         ];
     }
 }

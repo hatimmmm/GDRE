@@ -35,5 +35,10 @@ class Dossier extends Model
     {
         return $this->hasMany(SousDossier::class,'id_dossier','id_dossier');
     }
+
+    public function descripteursThematiques()
+    {
+        return $this->belongsToMany(DescripteursThematique::class,'dossier_thematique','id_dossier','id_descripteur_thematique','id_dossier','id_descripteur_thematique');
+    }
 }
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\DossierController;
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\EmprunteurController;
 use App\Http\Controllers\EntiteVersanteController;
+use App\Http\Controllers\ExemplaireSDController;
 use App\Http\Controllers\SousDossierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VersementController;
@@ -39,6 +40,8 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('versements',VersementController::class);
     Route::apiResource('dossiers',DossierController::class);
     Route::apiResource('sousDossiers',SousDossierController::class);
+    Route::apiResource('exemplairesSousDossier',ExemplaireSDController::class);
+
     Route::get('sousDossiers/{id}/dossier',function($id){
         $sousDossier = SousDossier::find($id);
         return $sousDossier->dossier;

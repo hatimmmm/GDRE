@@ -28,4 +28,9 @@ class SousDossier extends Model
     {
         return $this->belongsTo(Dossier::class,'id_dossier','id_dossier');
     }
+
+    public function exemplaires()
+    {
+        return $this->hasMany(ExemplaireSD::class,'id_sous_dossier','is_sous_dossier');
+    }
 }

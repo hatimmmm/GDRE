@@ -46,8 +46,8 @@ class DossierController extends Controller
         $dossier->bordereau_rempli_par = $data['rempli_par'];
         $dossier->bordereau_saisi_par = $data['saisi_par'];
         $dossier->date_saisie = $data['date_saisie'];
-
         $dossier->save();
+        $dossier->descripteursThematiques()->attach($data['id_descripteur_thematique'],['qualite'=>$data['qualite']]);
 
         return response(['message'=>'dossier cree',$dossier]);
     }

@@ -18,4 +18,9 @@ class DescripteursThematique extends Model
     ];
 
     protected $primary='id_descripteur_thematique';
+
+    public function dossiers()
+    {
+        return $this->belongsToMany(Dossier::class,'dossier_thematique','id_descripteur_thematique','id_dossier','id_descripteur_thematique','id_dossier');
+    }
 }
