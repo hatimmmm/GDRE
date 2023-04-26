@@ -14,4 +14,5 @@ class TypesDossier extends Model
     ];
 
     protected $primaryKey= 'id_type_dossier';
+
 }

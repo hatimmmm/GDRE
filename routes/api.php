@@ -54,7 +54,5 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
 
 
 
-
-
 Route::post('/login', [ApiAuthController::class, 'login']);
 

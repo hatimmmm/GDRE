@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('plan_classements', function (Blueprint $table) {
             $table->id('code_plan_classement');
             $table->string('plan_classement');
+
             $table->timestamps();
         });
     }
