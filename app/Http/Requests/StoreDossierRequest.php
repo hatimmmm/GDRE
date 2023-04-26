@@ -40,7 +40,15 @@ class StoreDossierRequest extends FormRequest
             'saisi_par'=>'string',
             'date_saisie'=>'date',
             'id_descripteur_thematique'=>'integer',
-            'qualite'=>'string'
+            'id_descripteur_geographique'=>'integer',
+            'id_descripteur_personne'=>'integer',
+            'id_article'=>'integer',
+            'id_langue'=>'integer',
+            'qualite_des_them'=>'string',
+            'qualite_des_geo'=>'string',
+            'qualite_des_pers'=>'string',
+            'qualite_langue'=>'string',
+
         ];
     }
 }

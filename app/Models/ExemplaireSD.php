@@ -25,4 +25,9 @@ class ExemplaireSD extends Model
     {
         return $this->belongsTo(SousDossier::class,'id_sous_dossier','id_sous_dossier');
     }
+
+    public function emprunts()
+    {
+        return $this->belongsToMany(Emprunt::class,'exemplaire_emprunt','id_exemplaire','id_emprunt','id_exemplaire','id_emprunt');
+    }
 }

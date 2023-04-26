@@ -40,5 +40,25 @@ class Dossier extends Model
     {
         return $this->belongsToMany(DescripteursThematique::class,'dossier_thematique','id_dossier','id_descripteur_thematique','id_dossier','id_descripteur_thematique');
     }
+
+    public function descripteursGeographiques()
+    {
+        return $this->belongsToMany(DescripteursGeographique::class,'dossier_geographique','id_dossier','id_descripteur_geographique','id_dossier','id_descripteur_geographique');
+    }
+
+    public function descripteursPersonnes()
+    {
+        return $this->belongsToMany(DescripteursPersonnes::class,'dossier_personne','id_dossier','id_descripteur_personne','id_dossier','id_descripteur_personne');
+    }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class,'dossier_article','id_dossier','id_article','id_dossier','id_article');
+    }
+    
+    public function langues()
+    {
+        return $this->belongsToMany(Langues::class,'dossier_langue','id_dossier','id_langue','id_dossier','id_langue');
+    }
 }
 

@@ -27,4 +27,9 @@ class Emprunt extends Model
     {
         return $this->belongsTo(Emprunteur::class,'id_emprunteur','id_emprunteur');
     }
+
+    public function exemplairesSD()
+    {
+        return $this->belongsToMany(ExemplaireSD::class,'exemplaire_emprunt','id_emprunt','id_exemplaire','id_emprunt','id_exemplaire');
+    }
 }

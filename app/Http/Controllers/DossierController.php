@@ -47,7 +47,11 @@ class DossierController extends Controller
         $dossier->bordereau_saisi_par = $data['saisi_par'];
         $dossier->date_saisie = $data['date_saisie'];
         $dossier->save();
-        $dossier->descripteursThematiques()->attach($data['id_descripteur_thematique'],['qualite'=>$data['qualite']]);
+        $dossier->descripteursThematiques()->attach($data['id_descripteur_thematique'],['qualite'=>$data['qualite_des_them']]);
+        $dossier->descripteursPersonnes()->attach($data['id_descripteur_personne'],['qualite'=>$data['qualite_des_pers']]);
+        $dossier->descripteursGeographiques()->attach($data['id_descripteur_geographique'],['qualite'=>$data['qualite_des_geo']]);
+        $dossier->articles()->attach($data['id_article']);
+        $dossier->langues()->attach($data['id_langue'],['qualite'=>$data['qualite_langue']]);
 
         return response(['message'=>'dossier cree',$dossier]);
     }

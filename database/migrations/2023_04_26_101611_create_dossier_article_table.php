@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dossier_thematique', function (Blueprint $table) {
-            $table->foreignId('id_descripteur_thematique')->constrained('descripteurs_thematiques','id_descripteur_thematique')->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('dossier_article', function (Blueprint $table) {
             $table->foreignId('id_dossier')->constrained('dossiers','id_dossier')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('qualite')->nullable();
-
+            $table->foreignId('id_article')->constrained('articles','id_article')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dossier_thematique');
+        Schema::dropIfExists('dossier_article');
     }
 };

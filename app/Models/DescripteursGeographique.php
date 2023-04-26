@@ -14,5 +14,12 @@ class DescripteursGeographique extends Model
         
     ];
 
-    protected $primary='id_descripteur_geographique';
+    protected $primaryKey='id_descripteur_geographique';
+
+    public function dossiers()
+    {
+        return $this->belongsToMany(Dossier::class,'dossier_geographique','id_descripteur_geographique','id_dossier','id_descripteur_geographique','id_dossier');
+    }
+
+
 }

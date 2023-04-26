@@ -19,7 +19,15 @@ class EmpruntController extends Controller
         $data = $request->validate([
             'id_emprunteur'=>'required|integer',
             'date_emprunt'=>'required|date',
-            'observation'=>'string'
+            'observation'=>'string',
+            'id_exemplaire'=>'integer',
+            'duree_pret'=>'integer',
+            'date_retour_prevu'=>'date',
+            'date_retour'=>'date',
+            'motif_retard'=>'string',
+            'valid_retour'=>'boolean',
+            'observation'=>'string',
+
         ]);
 
         $emprunt = new Emprunt;
@@ -29,6 +37,17 @@ class EmpruntController extends Controller
         $emprunt->observation = $data['observation'];
 
         $emprunt->save();
+
+        $emprunt->exemplairesSD()->attach($data['id_exemplaire'],[
+            'duree_pret'=>$data['duree_pret'],
+            'date_retour_prevu'=> $data['date_retour_prevu'],
+            'date_retour'=>$data['date_retour'],
+            'motif_retard'=>$data['motif_retard'],
+            'valid_retour'=>$data['valid_retour'],
+            'observation'=>$data['observation']
+            ]
+            
+        );
 
         return response(['message'=>'emprunt cree',$emprunt],200);
 
