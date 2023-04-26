@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Emprunteur extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'id_emprunteur';
+
     
     protected $fillable = [
         'nom',
@@ -16,5 +19,8 @@ class Emprunteur extends Model
         'emprunteur',
     ];
 
-    protected $primaryKey = 'id_emprunteur';
+
+    public function emprunts(){
+        return $this->hasMany(Emprunt::class,'id_emprunteur','id_emprunteur');
+    }
 }

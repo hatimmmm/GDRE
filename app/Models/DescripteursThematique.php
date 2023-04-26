@@ -17,5 +17,13 @@ class DescripteursThematique extends Model
         'commentaire'
     ];
 
-    protected $primary='id_descripteur_thematique';
+    protected $primaryKey='id_descripteur_thematique';
+
+
+    public function dossiers()
+    {
+        return $this->belongsToMany(Dossier::class,'dossier_thematique','id_descripteur_thematique','id_dossier','id_descripteur_thematique','id_dossier');
+    }
+
+
 }

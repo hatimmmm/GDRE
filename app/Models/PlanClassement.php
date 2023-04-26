@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PlanClassement extends Model
 {
     use HasFactory;
+
+    protected $fillable = 
+    [
+        'plan_classement'
+    ];
+
+    protected $primaryKey = 'code_plan_classement';
+
 }

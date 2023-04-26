@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plan_classements', function (Blueprint $table) {
-            $table->id('code_plan_classement');
-            $table->string('plan_classement');
-
+        Schema::create('versements', function (Blueprint $table) {
+            $table->integer('num_versement')->primary();
+            $table->date('date_versement');
+            $table->foreignId('id_entite_versante')->constrained('Entite_Versantes','id_entite_versante')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plan_classements');
+        Schema::dropIfExists('versements');
     }
 };

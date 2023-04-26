@@ -5,11 +5,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController as ApiAuthController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DossierController;
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\EmprunteurController;
 use App\Http\Controllers\EntiteVersanteController;
+use App\Http\Controllers\ExemplaireSDController;
+use App\Http\Controllers\SousDossierController;
 use App\Http\Controllers\UserController;
-use App\Models\EntiteVersante;
-use Illuminate\Routing\RouteGroup;
+use App\Http\Controllers\VersementController;
+use App\Models\Dossier;
+use App\Models\SousDossier;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +36,21 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('entiteVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);
+    Route::apiResource('emprunts',EmpruntController::class);
+    Route::apiResource('versements',VersementController::class);
+    Route::apiResource('dossiers',DossierController::class);
+    Route::apiResource('sousDossiers',SousDossierController::class);
+    Route::apiResource('exemplairesSousDossier',ExemplaireSDController::class);
+
+    Route::get('sousDossiers/{id}/dossier',function($id){
+        $sousDossier = SousDossier::find($id);
+        return $sousDossier->dossier;
+    });
+    Route::get('dossier/{id}/sousDossiers',function($id){
+        $dossier = Dossier::find($id);
+        return $dossier->sousDossier;
+    });
+    
 
 
 

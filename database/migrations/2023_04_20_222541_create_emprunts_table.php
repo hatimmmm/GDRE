@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plan_classements', function (Blueprint $table) {
-            $table->id('code_plan_classement');
-            $table->string('plan_classement');
+        Schema::create('emprunts', function (Blueprint $table) {
+            $table->id('id_emprunt');
+            $table->date('date_emprunt');
+            $table->text('observation');
 
+           $table->foreignId('id_emprunteur')
+           ->constrained('emprunteurs','id_emprunteur')
+           ->onUpdate('cascade')
+           ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plan_classements');
+        Schema::dropIfExists('emprunts');
     }
 };
