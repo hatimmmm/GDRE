@@ -14,10 +14,6 @@ return new class extends Migration
         Schema::create('plan_classements', function (Blueprint $table) {
             $table->id('code_plan_classement');
             $table->string('plan_classement');
-<<<<<<< HEAD
-=======
-
->>>>>>> d6270158d3d7e819e8763fedbda2eb12c0147aa2
             $table->timestamps();
         });
     }

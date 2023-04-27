@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\DossierResource;
 use App\Models\EtatsDossier;
 use App\Models\PlanClassement;
+use App\Models\SousDossier;
 use App\Models\TypesDossier;
 use App\Models\TypesSupport;
 use App\Models\Versement;
@@ -61,7 +62,7 @@ class DossierController extends Controller
      */
     public function show($id)
     {
-        $dossier = Dossier::find($id);
+        $dossier = Dossier::with('sousDossier')->find($id);
         if(!$dossier)
         {
             return response(['message'=>'dossier introuvable'],400);
