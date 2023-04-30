@@ -15,7 +15,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VersementController;
 use App\Models\Dossier;
 use App\Models\SousDossier;
-
+use GuzzleHttp\Middleware;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,22 @@ use App\Models\SousDossier;
 */
 
 Route::middleware('auth:sanctum')->group(function(){
-    
-});
-Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::apiResource('emprunteurs',EmprunteurController::class);
+    Route::get('/user', function (Request $request) {
+        $id= $request->user()->id;
+        $user = User::find($id);
+        $user->load(['roles']);
+        return $user;
+    });
+});
+
+
+Route::post('/logout', [ApiAuthController::class, 'logout']);
+
+Route::middleware([EsnsureUserRole::class])->group(function(){
+    Route::apiResource('emprunteurs',EmprunteurController::class);
+
+});
     Route::apiResource('entiteVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);
