@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::all());
+        return UserResource::collection(User::with('roles')->get());
     }
 
     public function store(SignupRequest $request)
@@ -32,8 +32,7 @@ class UserController extends Controller
         $user->tel = $data['tel'];
         $user->password = bcrypt($data['password']);
         $user->save();
-        $role= request()->role_id;
-        $user->addRole($role);
+        $user->addRole($data['role']);
         $token = $user->createToken('main')->plainTextToken;
 
         return response(compact('user','token'));

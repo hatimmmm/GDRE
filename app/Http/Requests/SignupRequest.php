@@ -29,6 +29,7 @@ class SignupRequest extends FormRequest
             'prenom'=> 'required|string|max:55',
             'email'=>'required|email|unique:users,email',
             'tel'=>'required|numeric|unique:users,tel',
+            'role'=>'required|integer',
             'password'=>[
                 'required',
                 'confirmed',

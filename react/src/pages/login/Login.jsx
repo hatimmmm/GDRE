@@ -66,7 +66,7 @@ export default function SignIn() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xl">
                 <CssBaseline />
                 <Box
                     sx={{
@@ -113,12 +113,8 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
-
                     </Box>
                 </Box>
-
-                <Outlet />
-
             </Container>
         </ThemeProvider>
     );
