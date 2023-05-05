@@ -1,37 +1,33 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useStateContext } from "../context/contextProvider"
+import { useDispatch, useSelector } from "react-redux"
 import axiosClient from "../API/axios-client"
+
 
 const ArchivisteAuth = ({ children }) => {
 
+    const { currentUser } = useSelector((state) => state.users)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { user, token, setUser } = useStateContext()
-    const [currentUser, setCurrentUser] = useState({})
-
+    const { token } = useStateContext()
+    const role = window.localStorage.getItem('USER_ROLE')
     useEffect(() => {
-        axiosClient
-            .get("/user")
-            .then(({ data }) => {
-                setUser(data)
-            })
-            .catch((err) => {
-                localStorage.removeItem("ACCESS_TOKEN");
-                console.log(err);
-            });
-        setTimeout(() => {
-            if (!token) {
-                navigate('/')
-                return
-            }
-            else if (user.roles[0].id !== 2) {
-                navigate('/unothorized')
-            }
-        }, 2000);
-    })
-
-
+        axiosClient.get('/user').then(({ data }) => {
+            dispatch(setCurrentUser(data))
+        }).catch((error) => {
+            console.log(error)
+        })
+        if (!token) {
+            navigate('/')
+            return
+        }
+        else if (currentUser && role !== '2') {
+            navigate('/unothorized')
+        }
+        console.log(role)
+    }, [])
     return children
 }
 

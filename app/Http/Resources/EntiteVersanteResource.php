@@ -16,7 +16,7 @@ class EntiteVersanteResource extends JsonResource
     {
         return [
             'id'=>$this->id_entite_versante,
-            'entite versante'=>$this->entite_versante
+            'entite_versante'=>$this->entite_versante
         ];
     }
 }

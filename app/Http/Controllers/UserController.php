@@ -79,7 +79,7 @@ class UserController extends Controller
         }
         $user->update();
 
-        return response($user,200);
+        return response(['message'=>'Utilisateur modifie',$user],200);
     }
 
     /**

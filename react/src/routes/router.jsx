@@ -9,13 +9,16 @@ import ArchivisteAuth from '../setup/auth/ArchivisteAuth'
 import AdminAuth from '../setup/auth/AdminAuth'
 import UserAuth from '../setup/auth/UserAuth'
 import Users from '../pages/users/Users'
+import LoginAuth from '../setup/auth/LoginAuth'
+import Versements from '../pages/versements/Versements'
+import AddVersement from '../pages/versements/components/AddVersement'
 
 
 
 export const router = createBrowserRouter([
     {
         'path': '/',
-        'element': <SignIn />,
+        'element': <LoginAuth><SignIn /></LoginAuth>,
     },
     {
         "path": "/admin-dashboard",
@@ -24,6 +27,16 @@ export const router = createBrowserRouter([
             {
                 "path": "users",
                 "element": <Users />
+            },
+            {
+                "path": "versements",
+                "element": <Versements />,
+                "children": [
+                    {
+                        'path': 'ajouterVersement',
+                        'element': <AddVersement />
+                    }
+                ]
             }
         ]
     },

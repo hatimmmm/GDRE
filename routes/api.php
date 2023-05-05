@@ -37,10 +37,11 @@ Route::middleware('auth:sanctum')->group(function(){
         $user->load(['roles']);
         return $user;
     });
+Route::post('/logout', [ApiAuthController::class, 'logout']);
+
 });
 
 
-Route::post('/logout', [ApiAuthController::class, 'logout']);
 
 Route::middleware([EsnsureUserRole::class])->group(function(){
     Route::apiResource('emprunteurs',EmprunteurController::class);

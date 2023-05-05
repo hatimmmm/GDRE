@@ -12,6 +12,9 @@ import { useEffect, useState } from 'react';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { IconButton } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { remUser } from '../../../store/slices/usersSlice';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,33 +36,20 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+export default function UsersList({ setUserId }) {
+  const dispatch = useDispatch()
 
-function createData(id, nom, prenom, email, tel) {
-  return { id, nom, prenom, email, tel };
-}
 
-export default function CustomizedTables() {
-
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    axiosClient.get('/users')
-      .then(({ data }) => {
-        setUsers(data.data)
-        console.log(data.data)
-      }).catch(({ response }) => {
-        console.log(response)
-      })
-  }, [])
-
+  const { users } = useSelector((state) => state.users)
   const onDelete = (id) => {
-    axiosClient.delete(`users/${id}`).then(({ response }) => {
+    axiosClient.delete(`/users/${id}`).then(({ response }) => {
       console.log(response)
-    }).catch((err) => {
-      console.log(err)
+    }).catch((error) => {
+      console.log(error)
     })
-  }
+    dispatch(remUser(id))
 
+  }
 
   return (
     <TableContainer component={Paper} sx={{ maxHeight: 400 }}>
@@ -77,7 +67,7 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user) => (
+          {users && users.map((user) => (
             <StyledTableRow key={user.id}>
               <StyledTableCell component="th" scope="row">
                 {user.id}
@@ -87,7 +77,7 @@ export default function CustomizedTables() {
               <StyledTableCell align="left">{user.email}</StyledTableCell>
               <StyledTableCell align="left">{user.tel}</StyledTableCell>
               <StyledTableCell align="left">{user.roles[0].display_name}</StyledTableCell>
-              <StyledTableCell align="left"><IconButton color='primary'><ManageAccountsIcon /></IconButton></StyledTableCell>
+              <StyledTableCell align="left"><IconButton color='primary' onClick={() => setUserId(user.id)}><ManageAccountsIcon /></IconButton></StyledTableCell>
               <StyledTableCell align="left"><IconButton onClick={() => { onDelete(user.id) }} color='error'><PersonRemoveIcon /></IconButton></StyledTableCell>
             </StyledTableRow>
           ))}

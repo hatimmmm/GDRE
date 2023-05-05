@@ -51,7 +51,7 @@ class VersementController extends Controller
             return response(['message'=>'versement introuvable'],400);
         }
 
-        return response([$versement,$versement->entiteVersante]);   
+        return response($versement,200);   
     }
 
     
@@ -66,17 +66,16 @@ class VersementController extends Controller
         if(!$versement)
         {
                 return response(['message'=>'versement introuvable']);
-        }
-        elseif(!EntiteVersante::find($data['id_entite_versante']))
-        {
-            return response(['message'=>'entite versante introuvable']);
-        }
-            
+        }   
         else{
             if(isset($data['num_versement'])){
                 $versement->num_versement=$data['num_versement'];
             }
             if(isset($data['id_entite_versante'])){
+                if(!EntiteVersante::find($data['id_entite_versante']))
+        {
+            return response(['message'=>'entite versante introuvable']);
+        }
                 $versement->id_entite_versante=$data['id_entite_versante'];
             }
             if(isset($data['date_versement'])){

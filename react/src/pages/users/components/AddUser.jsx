@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import { Typography } from '@mui/material';
 
-const AddForm = () => {
+const AddUser = () => {
     const [role, setRole] = React.useState('');
 
     const handleChange = (event) => {
@@ -98,4 +98,4 @@ const AddForm = () => {
     )
 }
 
-export default AddForm
+export default AddUser

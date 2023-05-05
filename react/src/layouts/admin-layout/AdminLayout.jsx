@@ -17,13 +17,12 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './components/list-items/ListeItems';
+import { MainListItems, SecondaryListItems } from './components/list-items/ListeItems';
 import { useStateContext } from '../../setup/context/contextProvider';
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import axiosClient from '../../setup/API/axios-client';
-
-
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 300;
 
@@ -74,15 +73,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+    const { currentUser } = useSelector((state) => state.users)
     const { user } = useStateContext()
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
-
-
-
-
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -112,7 +108,7 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            {`${user.nom} ${user.prenom} `}
+                            {`${currentUser.nom} ${currentUser.prenom} `}
                         </Typography>
                         <IconButton color="inherit">
                             <Badge badgeContent={4} color="secondary">
@@ -136,9 +132,9 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {mainListItems}
+                        <MainListItems />
                         <Divider sx={{ my: 1 }} />
-                        {/* {secondaryListItems} */}
+                        <SecondaryListItems />
                     </List>
                 </Drawer>
                 <Box
