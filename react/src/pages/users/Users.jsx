@@ -1,21 +1,16 @@
 import React from 'react'
 import AddUser from './components/AddUser'
-import { Divider, Table } from '@mui/material'
 import { useEffect } from 'react'
 import axiosClient from '../../setup/API/axios-client'
 import { useDispatch } from 'react-redux'
 import { setUsers } from '../../store/slices/usersSlice'
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { flexbox } from '@mui/system'
 import { useState } from 'react'
 import UsersList from './components/UsersList'
-import axios from 'axios'
 import UpdateUser from './components/UpdateUser'
 
 

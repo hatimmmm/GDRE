@@ -12,21 +12,21 @@ import Tab from '@mui/material/Tab';
 import PropTypes from 'prop-types';
 import EditIcon from '@mui/icons-material/Edit';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import AddVersement from './AddVersement';
-import { useSelector } from 'react-redux';
-import UpdateVersement from './UpdateVersement';
+import { useDispatch, useSelector } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useState, useEffect } from 'react';
 import axiosClient from '../../../setup/API/axios-client';
 import UpdateEntite from './UpdateEntite';
 import AddEntite from './AddEntite';
+import { remEntite } from '../../../store/slices/versementsSlice';
+
 
 
 export default function ListeEntites() {
     const { entitesVersantes } = useSelector((state) => state.versements)
-
     const [idEntite, setIdEntite] = useState(null)
     const [entiteVersante, setEntiteVersante] = useState({})
+    const dispatch = useDispatch()
     useEffect(() => {
         if (idEntite) {
             axiosClient.get(`entitesVersantes/${idEntite}`).then(({ data }) => {
@@ -82,7 +82,7 @@ export default function ListeEntites() {
         }).catch((error) => {
             console.log(error)
         })
-        // dispatch(remUser(id))
+        dispatch(remEntite(id))
     }
 
     return (

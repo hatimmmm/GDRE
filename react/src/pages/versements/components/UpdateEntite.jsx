@@ -45,13 +45,13 @@ const UpdateEntite = ({ entiteVersante }) => {
     }
 
     return (
-        <Paper sx={{ my: 2, width: '50%' }}>
+        <Paper sx={{ my: 2, width: 500 }}>
             <Typography variant='h6' align='center' sx={{ p: 2 }}>{`modifier entite versante: ${entiteVersante.entite_versante}`}</Typography>
             <Box
                 onSubmit={handleSubmit}
                 component="form"
                 display="flex"
-                flexDirection='column'
+                flexDirection='row'
                 justifyContent='center'
                 flexWrap="nowrap"
                 sx={{
@@ -67,8 +67,9 @@ const UpdateEntite = ({ entiteVersante }) => {
                     name='entite_versante'
                     defaultValue={entiteVersante.entite_versante}
                     onChange={handleEntiteVers}
+                    sx={{ width: '75%' }}
                 />
-                <Button type='submit' variant="outlined" color="primary" sx={{ m: 1, width: '50%' }}>Enregister</Button>
+                <Button type='submit' variant="outlined" color="primary" sx={{ m: 1, width: '25%' }}>Enregister</Button>
             </Box>
         </Paper >
     )

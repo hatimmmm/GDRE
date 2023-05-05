@@ -15,13 +15,16 @@ const versementsSlice = createSlice({
         setEntites: (state, action) => {
             state.entitesVersantes = action.payload
         },
-        setCurrentUser: (state, action) => {
-            state.currentUser = action.payload
+        remVersement: (state, action) => {
+            state.versements = state.versements.filter((versement) => versement.num_versements !== action.payload)
         },
+        remEntite: (state, action) => {
+            state.entitesVersantes = state.entitesVersantes.filter((entite) => entite.id !== action.payload)
+        }
     }
 
 }
 )
 
 export default versementsSlice.reducer
-export const { setVersements, setEntites, } = versementsSlice.actions
+export const { setVersements, setEntites, remVersement, remEntite } = versementsSlice.actions

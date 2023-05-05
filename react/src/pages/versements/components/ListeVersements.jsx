@@ -13,18 +13,19 @@ import PropTypes from 'prop-types';
 import EditIcon from '@mui/icons-material/Edit';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddVersement from './AddVersement';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UpdateVersement from './UpdateVersement';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useState, useEffect } from 'react';
 import axiosClient from '../../../setup/API/axios-client';
-
+import { remVersement } from '../../../store/slices/versementsSlice';
 
 export default function ListeVersements() {
     const { versements } = useSelector((state) => state.versements)
-
     const [numVersement, setNumVersement] = useState(null)
     const [versement, setVersement] = useState({})
+
+    const dispaatch = useDispatch()
     useEffect(() => {
         if (numVersement) {
             axiosClient.get(`versements/${numVersement}`).then(({ data }) => {
@@ -80,7 +81,7 @@ export default function ListeVersements() {
         }).catch((error) => {
             console.log(error)
         })
-        dispatch(remUser(id))
+        dispatch(remVersement(id))
     }
 
     return (
