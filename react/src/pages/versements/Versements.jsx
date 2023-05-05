@@ -17,7 +17,7 @@ const Versements = () => {
         }).catch((error) => {
             console.log(error)
         })
-        axiosClient.get('/entiteVersantes').then(({ data }) => {
+        axiosClient.get('/entitesVersantes').then(({ data }) => {
             dispatch(setEntites(data.data))
         }).catch((error) => {
             console.log(error)

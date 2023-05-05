@@ -47,7 +47,7 @@ Route::middleware([EsnsureUserRole::class])->group(function(){
     Route::apiResource('emprunteurs',EmprunteurController::class);
 
 });
-    Route::apiResource('entiteVersantes',EntiteVersanteController::class);
+    Route::apiResource('entitesVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);
     Route::apiResource('emprunts',EmpruntController::class);
