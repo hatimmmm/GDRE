@@ -11,7 +11,7 @@ import UserAuth from '../setup/auth/UserAuth'
 import Users from '../pages/users/Users'
 import LoginAuth from '../setup/auth/LoginAuth'
 import Versements from '../pages/versements/Versements'
-import AddVersement from '../pages/versements/components/AddVersement'
+import Emprunts from '../pages/emprunts/Emprunts'
 
 
 
@@ -31,12 +31,10 @@ export const router = createBrowserRouter([
             {
                 "path": "versements",
                 "element": <Versements />,
-                "children": [
-                    {
-                        'path': 'ajouterVersement',
-                        'element': <AddVersement />
-                    }
-                ]
+            },
+            {
+                "path": "emprunts",
+                "element": <Emprunts />,
             }
         ]
     },

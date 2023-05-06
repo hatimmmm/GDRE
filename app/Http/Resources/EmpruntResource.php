@@ -18,6 +18,7 @@ class EmpruntResource extends JsonResource
             'id_emprunt' => $this->id_emprunt,
             'date_emprunt' => $this->date_emprunt,
             'observation' => $this->observation,
+            'id_emprunteur'=>$this->id_emprunteur
         ];
     }
 }

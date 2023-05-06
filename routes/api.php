@@ -43,10 +43,7 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
 
 
 
-Route::middleware([EsnsureUserRole::class])->group(function(){
     Route::apiResource('emprunteurs',EmprunteurController::class);
-
-});
     Route::apiResource('entitesVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
     Route::apiResource('users',UserController::class);

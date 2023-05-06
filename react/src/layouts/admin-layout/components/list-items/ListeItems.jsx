@@ -48,7 +48,7 @@ export const MainListItems = () => {
                 <ListItemText primary="Exemplaire" />
             </ListItemButton>
         </Link>
-        <Link className='dashboard-link' to='users'>
+        <Link className='dashboard-link' to='emprunts'>
             <ListItemButton>
                 <ListItemIcon>
                     <BarChartIcon />
