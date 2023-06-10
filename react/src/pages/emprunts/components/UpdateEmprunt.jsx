@@ -53,7 +53,7 @@ const UpdateEmprunt = ({ emprunt }) => {
     }
 
     return (
-        <Paper sx={{ my: 2, width: '50%' }}>
+        <Paper sx={{ my: 2, width: 500 }}>
             <Typography variant='h6' align='center' sx={{ p: 2 }}>{`modifier emprunt num: ${emprunt.id_emprunt}`}</Typography>
             <Box
                 onSubmit={handleSubmit}
@@ -67,31 +67,10 @@ const UpdateEmprunt = ({ emprunt }) => {
                 }}
                 noValidate
                 autoComplete="on">
-
-                <TextField
-                    label="Date emprunt"
-                    required
-                    id="data_emprunt"
-                    name='data_emprunt'
-                    type="date"
-                    defaultValue=""
-                    onChange={handleDateEmprunt}
-
-                />
-                <TextField
-                    helperText="observation"
-                    required
-                    id="observation"
-                    name='observation'
-                    defaultValue=""
-                    type="text"
-                    onChange={handleObservation}
-
-                />
                 <TextField
                     id="id_emprunteur"
                     select
-                    label="id_emprunteur"
+                    label="Emprunteur"
                     defaultValue=""
                     name='id_emprunteur'
                     onChange={handleIdEmprunteur}
@@ -103,6 +82,27 @@ const UpdateEmprunt = ({ emprunt }) => {
                         </MenuItem>
                     ))}
                 </TextField>
+                <TextField
+                    helperText="Date emprunt"
+                    required
+                    id="date_emprunt"
+                    name='date_emprunt'
+                    type="date"
+                    defaultValue=""
+                    onChange={handleDateEmprunt}
+
+                />
+                <TextField
+                    aria-label="Observation"
+                    required
+                    id="observation"
+                    name='observation'
+                    defaultValue=""
+                    type="text"
+                    onChange={handleObservation}
+
+                />
+
 
                 <Button type='submit' variant="outlined" color="primary" sx={{ m: 1, width: '50%' }}>Enregister</Button>
             </Box>

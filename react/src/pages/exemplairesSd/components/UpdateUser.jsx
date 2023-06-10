@@ -50,7 +50,7 @@ const UpdateUser = ({ user, id, setUserId, setValue }) => {
       axiosClient.put(`users/${id}`, payload).then((response) => {
         console.log(response)
         if (response.status === 200) {
-          setUserId(null)
+          setUserId('')
           setValue(0)
 
         }

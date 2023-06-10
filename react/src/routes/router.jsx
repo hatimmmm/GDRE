@@ -12,6 +12,7 @@ import Users from '../pages/users/Users'
 import LoginAuth from '../setup/auth/LoginAuth'
 import Versements from '../pages/versements/Versements'
 import Emprunts from '../pages/emprunts/Emprunts'
+import Exemplaires from '../pages/exemplairesSd/Exemplaires'
 
 
 
@@ -35,7 +36,12 @@ export const router = createBrowserRouter([
             {
                 "path": "emprunts",
                 "element": <Emprunts />,
-            }
+            },
+            {
+                "path": "exemplaires",
+                "element": <Exemplaires />,
+            },
+
         ]
     },
     {

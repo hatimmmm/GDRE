@@ -16,7 +16,7 @@ import UpdateUser from './components/UpdateUser'
 
 const Users = () => {
 
-    const [userId, setUserId] = useState('')
+    const [userId, setUserId] = useState(null)
     const [user, setUser] = useState({})
     const dispatch = useDispatch()
 
@@ -25,11 +25,12 @@ const Users = () => {
         if (userId) {
             axiosClient.get(`users/${userId}`).then(({ data }) => {
                 setUser(data.data)
+                handleChangeIndex(2)
+
             }).catch((error) => {
                 console.log(error)
             })
         }
-        handleChangeIndex(2)
 
     }, [userId])
 
@@ -99,7 +100,7 @@ const Users = () => {
                 <AddUser />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <UpdateUser user={user} setUserId={handleChangeIndex} id={userId} setValue={setValue} />
+                <UpdateUser user={user} setUserId={setUserId} id={userId} setValue={handleChangeIndex} />
             </TabPanel>
 
         </Box >

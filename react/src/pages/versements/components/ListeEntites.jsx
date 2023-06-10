@@ -26,21 +26,22 @@ export default function ListeEntites() {
     const { entitesVersantes } = useSelector((state) => state.versements)
     const [idEntite, setIdEntite] = useState(null)
     const [entiteVersante, setEntiteVersante] = useState({})
+    const [value, setValue] = useState(0);
+
     const dispatch = useDispatch()
     useEffect(() => {
         if (idEntite) {
             axiosClient.get(`entitesVersantes/${idEntite}`).then(({ data }) => {
                 console.log(data)
                 setEntiteVersante(data.data)
+                handleChangeIndex(1)
             }).catch((error) => {
                 console.log(error)
             })
         }
-        handleChangeIndex(1)
 
     }, [idEntite])
 
-    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

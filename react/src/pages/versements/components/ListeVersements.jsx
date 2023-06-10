@@ -24,6 +24,8 @@ export default function ListeVersements() {
     const { versements } = useSelector((state) => state.versements)
     const [numVersement, setNumVersement] = useState(null)
     const [versement, setVersement] = useState({})
+    const [value, setValue] = useState(0);
+
 
     const dispaatch = useDispatch()
     useEffect(() => {
@@ -31,15 +33,14 @@ export default function ListeVersements() {
             axiosClient.get(`versements/${numVersement}`).then(({ data }) => {
                 console.log(data)
                 setVersement(data)
+                handleChangeIndex(1)
             }).catch((error) => {
                 console.log(error)
             })
         }
-        handleChangeIndex(1)
 
     }, [numVersement])
 
-    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

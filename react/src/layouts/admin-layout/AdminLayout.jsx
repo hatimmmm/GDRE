@@ -11,18 +11,15 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { MainListItems, SecondaryListItems } from './components/list-items/ListeItems';
 import { useStateContext } from '../../setup/context/contextProvider';
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import axiosClient from '../../setup/API/axios-client';
 import { useSelector } from 'react-redux';
+import { lightGreen } from '@mui/material/colors';
+import figtree from '../../assets/fonts/Figtree-VariableFont_wght.ttf'
 
 const drawerWidth = 300;
 
@@ -70,7 +67,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const mdTheme = createTheme();
+const mdTheme = createTheme({
+    palette: {
+        primary: lightGreen
+    },
+    typography: {
+        fontFamily: ['Figtree', 'sans-serif',].join(','),
+    }
+});
 
 function DashboardContent() {
     const { currentUser } = useSelector((state) => state.users)
@@ -110,11 +114,13 @@ function DashboardContent() {
                         >
                             {`${currentUser.nom} ${currentUser.prenom} `}
                         </Typography>
-                        <IconButton color="inherit">
+                        <img src="../../../public/logo.png" alt="" />
+
+                        {/* <IconButton color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
-                        </IconButton>
+                        </IconButton> */}
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>

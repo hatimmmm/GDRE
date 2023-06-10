@@ -41,10 +41,6 @@ class EmpruntController extends Controller
         $emprunt->exemplairesSD()->attach($data['id_exemplaire'],[
             'duree_pret'=>$data['duree_pret'],
             'date_retour_prevu'=> $data['date_retour_prevu'],
-            'date_retour'=>$data['date_retour'],
-            'motif_retard'=>$data['motif_retard'],
-            'valid_retour'=>$data['valid_retour'],
-            'observation'=>$data['observation']
             ]
             
         );

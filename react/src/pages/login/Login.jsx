@@ -73,11 +73,10 @@ export default function SignIn() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                    <img src="../../../public/logo.png" alt="" />
+
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        S'inscrire
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField

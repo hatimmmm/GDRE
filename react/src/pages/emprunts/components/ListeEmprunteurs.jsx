@@ -26,21 +26,21 @@ export default function ListeEmprunteurs() {
     const { emprunteurs } = useSelector((state) => state.emprunts)
     const [idEmprunteur, setIdEmprunteur] = useState(null)
     const [emprunteur, setEmprunteur] = useState({})
+    const [value, setValue] = useState(0);
     const dispatch = useDispatch()
     useEffect(() => {
         if (idEmprunteur) {
             axiosClient.get(`emprunteurs/${idEmprunteur}`).then(({ data }) => {
                 console.log(data)
                 setEmprunteur(data.data)
+                handleChangeIndex(1)
             }).catch((error) => {
                 console.log(error)
             })
         }
-        handleChangeIndex(1)
 
     }, [idEmprunteur])
 
-    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

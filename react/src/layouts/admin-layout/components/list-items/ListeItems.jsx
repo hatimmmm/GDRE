@@ -40,7 +40,7 @@ export const MainListItems = () => {
                 <ListItemText primary="Dossiers" />
             </ListItemButton>
         </Link>
-        <Link className='dashboard-link' to='users'>
+        <Link className='dashboard-link' to='exemplaires'>
             <ListItemButton>
                 <ListItemIcon>
                     <InsertDriveFileIcon />

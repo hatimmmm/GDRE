@@ -24,22 +24,22 @@ export default function ListeEmprunts() {
     const { emprunts } = useSelector((state) => state.emprunts)
     const [idEmprunt, setIdEmprunt] = useState(null)
     const [emprunt, setEmprunt] = useState({})
+    const [value, setValue] = useState(0);
 
     const dispatch = useDispatch()
     useEffect(() => {
         if (idEmprunt) {
             axiosClient.get(`emprunts/${idEmprunt}`).then(({ data }) => {
-                console.log(data)
                 setEmprunt(data)
+                handleChangeIndex(1)
+
             }).catch((error) => {
                 console.log(error)
             })
         }
-        handleChangeIndex(1)
 
     }, [idEmprunt])
 
-    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

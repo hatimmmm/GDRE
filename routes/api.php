@@ -41,8 +41,6 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
 
 });
 
-
-
     Route::apiResource('emprunteurs',EmprunteurController::class);
     Route::apiResource('entitesVersantes',EntiteVersanteController::class);
     Route::apiResource('articles',ArticleController::class);
@@ -63,10 +61,5 @@ Route::post('/logout', [ApiAuthController::class, 'logout']);
         return $dossier->sousDossier();
     });
     
-
-
-
-
-
 Route::post('/login', [ApiAuthController::class, 'login']);
 
